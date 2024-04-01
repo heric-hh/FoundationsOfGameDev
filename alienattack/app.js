@@ -41,8 +41,8 @@ function clickHandler() {
 }
 
 function playGame() {
-    shotsRemaining = - 1;
-    shotsMade = + 1;
+    shotsRemaining = shotsRemaining - 1;
+    shotsMade = shotsMade + 1;
     gameState = "Shots: " + shotsMade + ", Remaining: " + shotsRemaining;
 
     guessX = parseInt(inputX.value);
@@ -56,7 +56,14 @@ function playGame() {
             gameWon = true;
             endGame();
         }
-    } else {
+        else {
+            output.innerHTML = "Miss! " + gameState;
+            if (shotsRemaining < 1) {
+                endGame();
+            }
+        }
+    }
+    else {
         output.innerHTML = "Miss! " + gameState;
 
         //Check for the end of the game
